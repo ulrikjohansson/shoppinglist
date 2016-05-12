@@ -1,9 +1,9 @@
-from pytest import fixture
+from pytest import fixture #type: ignore
 
 @fixture
 def item():
     from shoppinglist.item import Item
-    return Item()
+    return Item(name="Test")
 
 def test_default_state_is_unchecked(item):
     assert item.is_checked() is False
