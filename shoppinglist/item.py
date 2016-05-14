@@ -15,5 +15,9 @@ class Item:
     def uncheck(self) -> None:
         self._checked = False
 
+    def __str__(self):
+        checked = ("\u2611" if self.is_checked() else "\u2610")
+        return "{checked} {name}".format(name=self._name, checked=checked)
+
 #    def __repr__(self):
 #        return "id:{obj_id!r} name:{name!r} checked:{checked!r}".format(obj_id=id(self), name=self._name, checked=self._checked)
