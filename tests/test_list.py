@@ -32,9 +32,9 @@ def test_remove_item_from_list(shoppinglist: ShoppingList):
     shoppinglist.add(item)
     shoppinglist.remove(item)
 
-def test_get_items_from_list(shoppinglist: ShoppingList, item: Item):
+def test_get_item_from_list(shoppinglist: ShoppingList, item: Item):
     shoppinglist.add(item)
-    assert shoppinglist.get() == [item]
+    assert shoppinglist[0] == item
 
 def test_cannot_add_same_item_object_twice(shoppinglist: ShoppingList, item: Item):
     with pytest.raises(ValueError):
@@ -44,8 +44,7 @@ def test_cannot_add_same_item_object_twice(shoppinglist: ShoppingList, item: Ite
 def test_returned_items_are_references(shoppinglist: ShoppingList, item: Item):
     shoppinglist.add(item)
 
-    referenced_item = shoppinglist.get()
-    assert referenced_item[0] is item
+    assert shoppinglist[0] is item
 
 @pytest.mark.item_name(item_name="item")
 def test_clear_items_from_list(shoppinglist: ShoppingList, item: Item, item2: Item):
